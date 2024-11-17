@@ -1,0 +1,36 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Perfil</h1>
+    </header>
+
+    <div class="perfil-content">
+        <p><strong>Nome:</strong> <span id="perfilNome"></span></p>
+        <p><strong>Email:</strong> <span id="perfilEmail"></span></p>
+        <p><strong>Telefone:</strong> <span id="perfilTelefone"></span></p>
+        <p><strong>CPF:</strong> <span id="perfilCPF"></span></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+            if (usuario) {
+                document.getElementById("perfilNome").textContent = usuario.nome;
+                document.getElementById("perfilEmail").textContent = usuario.email;
+                document.getElementById("perfilTelefone").textContent = usuario.telefone;
+                document.getElementById("perfilCPF").textContent = usuario.cpf;
+            } else {
+                alert("Nenhum usuário cadastrado.");
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>
